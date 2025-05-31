@@ -1,3 +1,11 @@
+### This source code is part of Laravel Dev Test at Physiomobile
+
+#### Key Features : 
+- Using UUID v7 as Primary Key instead of Autoincrement integer for scalability e.g. in distributed system/microservice architectures
+- Using JWT for authentication methods such as in mobile app flows where users provide their credentials (email & password) to get an access token to be used in subsequent requests.
+- Using Laravel Route resource to simplify routing for common endpoints
+- For a larger system, we can use for Service-Repository pattern
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
