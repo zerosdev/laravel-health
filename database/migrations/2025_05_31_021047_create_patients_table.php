@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnUpdate()->cascadeOnUpdate();
+            $table->string('name');
+            $table->enum('id_type', ['id_card', 'driving_license']);
+            $table->string('id_no');
+            $table->enum('gender', ['male', 'female']);
+            $table->date('dob');
+            $table->text('address');
             $table->string('medium_acquisition')->nullable();
             $table->timestamps();
         });

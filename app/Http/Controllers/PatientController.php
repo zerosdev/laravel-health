@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -27,13 +28,20 @@ class PatientController extends Controller
     {
         $validated = $request->validate(
             [
+                'name' => ['required', 'string', 'max:200'],
+                'id_type' => ['required', 'string', 'in:id_card,driving_license'],
+                'id_no' => ['required', 'string'],
+                'gender' => ['required', 'string', 'in:male,female'],
+                'dob' => ['required', 'string', 'date_format:d-m-Y'],
+                'address' => ['required', 'string'],
                 'medium_acquisition' => ['required', 'string'],
             ],
             [
-                'medium_acquisition.required' => 'Medium Acquisition must be filled',
-                'medium_acquisition.string' => 'Medium Acquisition is invalid',
+                // optional: add custom messages
             ]
         );
+
+        $validated['dob'] = Carbon::createFromFormat('d-m-Y', $validated['dob'])->format('Y-m-d');
 
         $newPatient = $request->user()->patients()
             ->create($validated);
@@ -59,13 +67,20 @@ class PatientController extends Controller
     {
         $validated = $request->validate(
             [
+                'name' => ['required', 'string', 'max:200'],
+                'id_type' => ['required', 'string', 'in:id_card,driving_license'],
+                'id_no' => ['required', 'string'],
+                'gender' => ['required', 'string', 'in:male,female'],
+                'dob' => ['required', 'string', 'date_format:d-m-Y'],
+                'address' => ['required', 'string'],
                 'medium_acquisition' => ['required', 'string'],
             ],
             [
-                'medium_acquisition.required' => 'Medium Acquisition must be filled',
-                'medium_acquisition.string' => 'Medium Acquisition is invalid',
+                // optional: add custom messages
             ]
         );
+
+        $validated['dob'] = Carbon::createFromFormat('d-m-Y', $validated['dob'])->format('Y-m-d');
 
         $request->user()->patients()
             ->where('id', $id)

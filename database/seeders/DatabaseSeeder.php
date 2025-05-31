@@ -20,11 +20,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => Hash::make('password'),
-            'id_type' => 'id_card',
-            'id_no' => fake()->randomNumber(),
-            'gender' => 'male',
-            'dob' => now()->format('Y-m-d'),
-            'address' => fake()->address(),
         ]);
     }
 }

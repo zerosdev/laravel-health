@@ -17,11 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('id_type', ['id_card', 'driving_license']);
-            $table->string('id_no');
-            $table->enum('gender', ['male', 'female']);
-            $table->date('dob');
-            $table->text('address');
             $table->rememberToken();
             $table->timestamps();
         });
